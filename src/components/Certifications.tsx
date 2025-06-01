@@ -11,7 +11,7 @@ const Certifications = () => {
       skills: ['BigQuery', 'Dataflow', 'Cloud Composer', 'Data Pipeline Design'],
       color: 'from-blue-500 to-cyan-500',
       logo: 'https://upload.wikimedia.org/wikipedia/commons/5/51/Google_Cloud_logo.svg',
-      certificateUrl: '/lovable-uploads/88cf070b-0acf-4570-b96e-e48891c594bb.png',
+      certificateUrl: '/my_files/google_certificate.png',
       fileName: 'Google_Cloud_Professional_Data_Engineer_Certificate.png'
     },
     {
@@ -21,7 +21,7 @@ const Certifications = () => {
       skills: ['Azure Services', 'Virtual Machines', 'Storage', 'Networking'],
       color: 'from-purple-500 to-pink-500',
       logo: 'https://upload.wikimedia.org/wikipedia/commons/4/44/Microsoft_logo.svg',
-      certificateUrl: '/lovable-uploads/6cd513ca-961a-46a3-a9e4-82204fbd3a06.png',
+      certificateUrl: '/my_files/microsoft_certificate.png',
       fileName: 'Microsoft_Azure_Administrator_Associate_Certificate.png'
     }
   ];

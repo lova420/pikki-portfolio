@@ -1,3 +1,4 @@
+import emailjs from 'emailjs-com';
 
 export interface ContactFormData {
   name: string;
@@ -8,17 +9,17 @@ export interface ContactFormData {
 
 export const sendContactEmail = async (formData: ContactFormData): Promise<boolean> => {
   try {
-    // For now, this will log the form data to console
-    // You can replace this with your preferred email service (EmailJS, Formspree, etc.)
-    console.log('Contact form submission:', {
-      ...formData,
-      timestamp: new Date().toISOString(),
-      recipient: 'lovarajupikki123@gmail.com'
-    });
-
-    // Simulate API call delay
-    await new Promise(resolve => setTimeout(resolve, 1000));
-
+    await emailjs.send(
+      'service_wy4ku8n',
+      'template_q0wy6vz',
+      {
+        from_name: formData.name,
+        from_email: formData.email,
+        subject: formData.subject,
+        message: formData.message,
+      },
+      '7dCF-s_NJkhJlP0uD'
+    );
     return true;
   } catch (error) {
     console.error('Error sending email:', error);
