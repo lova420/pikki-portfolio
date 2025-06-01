@@ -2,9 +2,10 @@
 import React, { useState } from 'react';
 import { Mail, Phone, MapPin, Linkedin, Send, CheckCircle } from 'lucide-react';
 import { useToast } from '../hooks/use-toast';
+import { sendContactEmail, ContactFormData } from '../services/emailService';
 
 const Contact = () => {
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState<ContactFormData>({
     name: '',
     email: '',
     subject: '',
@@ -24,15 +25,27 @@ const Contact = () => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Simulate form submission
-    setTimeout(() => {
-      setIsSubmitting(false);
+    try {
+      const success = await sendContactEmail(formData);
+      
+      if (success) {
+        toast({
+          title: "Message Sent!",
+          description: "Thank you for your message. I'll get back to you soon!",
+        });
+        setFormData({ name: '', email: '', subject: '', message: '' });
+      } else {
+        throw new Error('Failed to send message');
+      }
+    } catch (error) {
       toast({
-        title: "Message Sent!",
-        description: "Thank you for your message. I'll get back to you soon!",
+        title: "Error",
+        description: "Failed to send message. Please try again or contact me directly.",
+        variant: "destructive",
       });
-      setFormData({ name: '', email: '', subject: '', message: '' });
-    }, 1000);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const contactInfo = [

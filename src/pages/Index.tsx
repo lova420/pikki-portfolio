@@ -9,20 +9,23 @@ import Certifications from '../components/Certifications';
 import Contact from '../components/Contact';
 import Navbar from '../components/Navbar';
 import ParticleBackground from '../components/ParticleBackground';
+import { ThemeProvider } from '../contexts/ThemeContext';
 
 const Index = () => {
   return (
-    <div className="min-h-screen bg-gray-900 text-white relative overflow-x-hidden">
-      <ParticleBackground />
-      <Navbar />
-      <Hero />
-      <About />
-      <Experience />
-      <Skills />
-      <Education />
-      <Certifications />
-      <Contact />
-    </div>
+    <ThemeProvider>
+      <div className="min-h-screen bg-gray-900 dark:bg-gray-900 bg-white text-white dark:text-white text-gray-900 relative overflow-x-hidden transition-colors duration-300">
+        <ParticleBackground />
+        <Navbar />
+        <Hero />
+        <About />
+        <Experience />
+        <Skills />
+        <Education />
+        <Certifications />
+        <Contact />
+      </div>
+    </ThemeProvider>
   );
 };
 

@@ -8,7 +8,7 @@ const Experience = () => {
       company: 'Bilvantis Technologies',
       role: 'Cloud Data Engineer',
       period: 'May 2024 - Present',
-      location: 'Remote',
+      location: 'On-site',
       responsibilities: [
         'Designed and implemented scalable cloud data solutions using Google Cloud Platform',
         'Utilized AI and Machine Learning techniques to optimize data engineering processes',

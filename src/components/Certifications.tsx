@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { Award, ExternalLink } from 'lucide-react';
+import { Award, ExternalLink, Download } from 'lucide-react';
 
 const Certifications = () => {
   const certifications = [
@@ -9,16 +9,39 @@ const Certifications = () => {
       issuer: 'Google Cloud',
       description: 'Demonstrates expertise in designing, building, operationalizing, securing, and monitoring data processing systems',
       skills: ['BigQuery', 'Dataflow', 'Cloud Composer', 'Data Pipeline Design'],
-      color: 'from-blue-500 to-cyan-500'
+      color: 'from-blue-500 to-cyan-500',
+      logo: 'https://upload.wikimedia.org/wikipedia/commons/5/51/Google_Cloud_logo.svg',
+      certificateUrl: '/lovable-uploads/88cf070b-0acf-4570-b96e-e48891c594bb.png',
+      fileName: 'Google_Cloud_Professional_Data_Engineer_Certificate.png'
     },
     {
       title: 'Microsoft Certified Azure Administrator Associate',
       issuer: 'Microsoft',
       description: 'Validates skills in implementing, managing, and monitoring Azure environments',
       skills: ['Azure Services', 'Virtual Machines', 'Storage', 'Networking'],
-      color: 'from-purple-500 to-pink-500'
+      color: 'from-purple-500 to-pink-500',
+      logo: 'https://upload.wikimedia.org/wikipedia/commons/4/44/Microsoft_logo.svg',
+      certificateUrl: '/lovable-uploads/6cd513ca-961a-46a3-a9e4-82204fbd3a06.png',
+      fileName: 'Microsoft_Azure_Administrator_Associate_Certificate.png'
     }
   ];
+
+  const downloadCertificate = async (certificateUrl: string, fileName: string) => {
+    try {
+      const response = await fetch(certificateUrl);
+      const blob = await response.blob();
+      const url = window.URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.href = url;
+      link.download = fileName;
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      window.URL.revokeObjectURL(url);
+    } catch (error) {
+      console.error('Error downloading certificate:', error);
+    }
+  };
 
   return (
     <section id="certifications" className="py-20 bg-gray-800/50">
@@ -39,8 +62,12 @@ const Certifications = () => {
               className="group bg-gray-900/50 rounded-lg p-8 border border-gray-700 hover:border-blue-500 transition-all duration-300 transform hover:scale-105 hover:shadow-2xl"
             >
               <div className="flex items-start gap-4 mb-6">
-                <div className={`p-4 rounded-lg bg-gradient-to-r ${cert.color}/20 group-hover:scale-110 transition-transform duration-300`}>
-                  <Award className={`text-transparent bg-gradient-to-r ${cert.color} bg-clip-text`} size={32} />
+                <div className={`p-4 rounded-lg bg-gradient-to-r ${cert.color}/20 group-hover:scale-110 transition-transform duration-300 flex items-center justify-center`}>
+                  <img 
+                    src={cert.logo} 
+                    alt={`${cert.issuer} logo`} 
+                    className="w-8 h-8 object-contain"
+                  />
                 </div>
                 <div className="flex-1">
                   <h3 className="text-xl font-bold text-white mb-2 group-hover:text-blue-400 transition-colors duration-300">
@@ -66,9 +93,12 @@ const Certifications = () => {
               </div>
 
               <div className="mt-6 flex justify-end">
-                <button className="flex items-center gap-2 text-blue-400 hover:text-blue-300 transition-colors duration-300">
-                  <span className="text-sm">View Certificate</span>
-                  <ExternalLink size={16} />
+                <button 
+                  onClick={() => downloadCertificate(cert.certificateUrl, cert.fileName)}
+                  className="flex items-center gap-2 text-blue-400 hover:text-blue-300 transition-colors duration-300"
+                >
+                  <span className="text-sm">Download Certificate</span>
+                  <Download size={16} />
                 </button>
               </div>
             </div>

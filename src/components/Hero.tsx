@@ -47,14 +47,6 @@ const Hero = () => {
   return (
     <section id="home" className="min-h-screen flex items-center justify-center relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center z-10">
-        <div className="mb-8">
-          <img
-            src="/lovable-uploads/e6d1dc26-bd54-449e-a2a5-0dee763c5acb.png"
-            alt="Pikki Lovaraju"
-            className="w-48 h-48 rounded-full mx-auto mb-8 border-4 border-blue-500 shadow-2xl transform hover:scale-105 transition-transform duration-300"
-          />
-        </div>
-
         <h1 className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-blue-400 via-purple-500 to-cyan-400 bg-clip-text text-transparent animate-fade-in">
           Pikki Lovaraju
         </h1>

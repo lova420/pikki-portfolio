@@ -1,6 +1,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { Menu, X, Home, User, Briefcase, Award, Mail } from 'lucide-react';
+import ThemeToggle from './ThemeToggle';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -35,7 +36,7 @@ const Navbar = () => {
     <nav
       className={`fixed top-0 w-full z-50 transition-all duration-300 ${
         scrolled
-          ? 'bg-gray-900/95 backdrop-blur-sm shadow-lg'
+          ? 'bg-gray-900/95 backdrop-blur-sm shadow-lg dark:bg-gray-900/95'
           : 'bg-transparent'
       }`}
     >
@@ -47,8 +48,8 @@ const Navbar = () => {
             </h1>
           </div>
 
-          <div className="hidden md:block">
-            <div className="ml-10 flex items-baseline space-x-4">
+          <div className="hidden md:flex items-center space-x-4">
+            <div className="flex items-baseline space-x-4">
               {navItems.map((item) => (
                 <button
                   key={item.name}
@@ -60,9 +61,11 @@ const Navbar = () => {
                 </button>
               ))}
             </div>
+            <ThemeToggle />
           </div>
 
-          <div className="md:hidden">
+          <div className="md:hidden flex items-center space-x-2">
+            <ThemeToggle />
             <button
               onClick={() => setIsOpen(!isOpen)}
               className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none"
