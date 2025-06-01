@@ -87,6 +87,17 @@ const Contact = () => {
           </p>
         </div>
 
+        {/* EmailJS Setup Notice */}
+        <div className="mb-8 p-4 bg-yellow-900/20 border border-yellow-500/30 rounded-lg">
+          <p className="text-yellow-300 text-sm">
+            <strong>Note:</strong> To receive emails directly, you need to set up EmailJS. 
+            Visit <a href="https://www.emailjs.com/" target="_blank" rel="noopener noreferrer" className="underline hover:text-yellow-200">EmailJS.com</a> to:
+            <br />1. Create an account and get your Service ID, Template ID, and Public Key
+            <br />2. Update the configuration in src/services/emailService.ts
+            <br />Currently, form submissions are logged to console for testing.
+          </p>
+        </div>
+
         <div className="grid lg:grid-cols-2 gap-12">
           {/* Contact Information */}
           <div className="space-y-8">
