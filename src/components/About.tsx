@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { Code, Database, Cloud, Brain } from 'lucide-react';
+import { Code, Database, Cloud, Brain, User } from 'lucide-react';
 import TiltCard3D from './TiltCard3D';
 
 const About = () => {
@@ -32,27 +32,34 @@ const About = () => {
   ];
 
   return (
-    <section id="about" className="py-20 bg-gray-800/50">
+    <section id="about" className="py-16 bg-gray-800/30">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent animate-gradient-x">
+        <div className="text-center mb-12">
+          <div className="inline-flex items-center gap-2 px-4 py-2 bg-blue-500/10 rounded-full mb-6 border border-blue-500/20">
+            <User size={18} className="text-blue-400" />
+            <span className="text-blue-400 font-medium text-sm tracking-wide uppercase">Get to Know Me</span>
+          </div>
+          <h2 className="text-4xl md:text-6xl font-extrabold mb-6 bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent animate-gradient-x">
             About Me
           </h2>
-          <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+          <p className="text-lg md:text-xl text-gray-200 max-w-3xl mx-auto leading-relaxed">
             Passionate about transforming data into actionable insights through innovative cloud solutions
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-12 items-center mb-16">
-          <div className="space-y-6">
-            <h3 className="text-2xl font-semibold text-white mb-4">Profile Summary</h3>
-            <p className="text-gray-300 leading-relaxed">
+        <div className="grid md:grid-cols-2 gap-16 items-start mb-16">
+          <div className="space-y-8">
+            <h3 className="text-2xl md:text-3xl font-bold text-white mb-6 flex items-center gap-3">
+              <span className="w-10 h-1 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full" />
+              Profile Summary
+            </h3>
+            <p className="text-gray-200 leading-relaxed text-lg">
               As a dedicated GCP Data Engineer, I specialize in designing, building, and optimizing 
               scalable data pipelines using cutting-edge technologies like BigQuery, Cloud SQL, 
               Apache Airflow, and Cloud Composer. My expertise extends to integrating AI and Machine 
               Learning models into data workflows, enabling intelligent data processing and analytics.
             </p>
-            <p className="text-gray-300 leading-relaxed">
+            <p className="text-gray-200 leading-relaxed text-lg">
               With hands-on experience at Bilvantis Technologies, I've successfully implemented 
               cloud data solutions that drive business value and enable data-driven decision making. 
               I'm passionate about staying at the forefront of data engineering innovations and 
@@ -60,29 +67,29 @@ const About = () => {
             </p>
           </div>
 
-          <div className="grid grid-cols-2 gap-6 perspective-1000">
+          <div className="grid grid-cols-2 gap-5 perspective-1000">
             {highlights.map((item, index) => (
               <TiltCard3D key={index} className="h-full" tiltIntensity={12}>
-                <div className="p-6 bg-gray-900/60 rounded-xl border border-gray-700/50 h-full backdrop-blur-sm relative overflow-hidden group">
+                <div className="p-6 bg-gray-900/70 rounded-2xl border border-gray-700/50 min-h-[220px] h-full backdrop-blur-sm relative overflow-hidden group flex flex-col">
                   {/* Animated border glow on hover */}
-                  <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-xl"
+                  <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl"
                     style={{
-                      background: 'linear-gradient(45deg, transparent, rgba(59, 130, 246, 0.1), transparent)',
+                      background: 'linear-gradient(135deg, rgba(59, 130, 246, 0.08) 0%, transparent 50%, rgba(168, 85, 247, 0.08) 100%)',
                     }}
                   />
                   
                   {/* 3D floating icon with rotation on hover */}
                   <div 
-                    className={`inline-flex p-3 rounded-xl bg-gradient-to-br ${item.gradient} mb-4 shadow-lg transform transition-all duration-500 group-hover:scale-110 group-hover:rotate-6`}
+                    className={`inline-flex p-4 rounded-xl bg-gradient-to-br ${item.gradient} mb-5 shadow-lg transform transition-all duration-500 group-hover:scale-110 group-hover:rotate-6`}
                     style={{ transformStyle: 'preserve-3d' }}
                   >
                     <item.icon size={28} className="text-white" />
                   </div>
                   
-                  <h4 className="text-lg font-semibold text-white mb-2 group-hover:text-blue-400 transition-colors duration-300">
+                  <h4 className="text-lg font-bold text-white mb-3 group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-blue-400 group-hover:to-purple-400 group-hover:bg-clip-text transition-all duration-300">
                     {item.title}
                   </h4>
-                  <p className="text-gray-400 text-sm leading-relaxed">
+                  <p className="text-gray-200 text-sm leading-relaxed flex-grow">
                     {item.description}
                   </p>
                 </div>

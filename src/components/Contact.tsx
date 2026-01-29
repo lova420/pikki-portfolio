@@ -76,13 +76,13 @@ const Contact = () => {
   ];
 
   return (
-    <section id="contact" className="py-20">
+    <section id="contact" className="py-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent animate-gradient-x">
             Get In Touch
           </h2>
-          <p className="text-xl text-gray-300 max-w-2xl mx-auto">
+          <p className="text-xl text-gray-200 max-w-2xl mx-auto">
             Ready to discuss your next data engineering project? Let's connect and explore how we can work together.
           </p>
         </div>
@@ -105,7 +105,7 @@ const Contact = () => {
                       <info.icon className="text-blue-400" size={24} />
                     </div>
                     <div>
-                      <p className="text-gray-400 text-sm">{info.label}</p>
+                      <p className="text-gray-200 text-sm">{info.label}</p>
                       <p className="text-white font-semibold">{info.value}</p>
                     </div>
                   </a>
@@ -115,7 +115,7 @@ const Contact = () => {
 
             <div className="p-6 bg-gradient-to-r from-blue-500/10 to-purple-500/10 rounded-lg border border-blue-500/30">
               <h4 className="text-lg font-semibold text-white mb-3">Quick Connect</h4>
-              <p className="text-gray-300 mb-4">
+              <p className="text-gray-200 mb-4">
                 For immediate responses, connect with me on LinkedIn or send me an email directly.
               </p>
               <div className="flex gap-4">
@@ -145,7 +145,7 @@ const Contact = () => {
             <form onSubmit={handleSubmit} className="space-y-6">
               <div className="grid md:grid-cols-2 gap-6">
                 <div>
-                  <label htmlFor="name" className="block text-gray-300 mb-2">
+                  <label htmlFor="name" className="block text-gray-200 mb-2">
                     Your Name
                   </label>
                   <input
@@ -160,7 +160,7 @@ const Contact = () => {
                   />
                 </div>
                 <div>
-                  <label htmlFor="email" className="block text-gray-300 mb-2">
+                  <label htmlFor="email" className="block text-gray-200 mb-2">
                     Your Email
                   </label>
                   <input
@@ -177,7 +177,7 @@ const Contact = () => {
               </div>
 
               <div>
-                <label htmlFor="subject" className="block text-gray-300 mb-2">
+                <label htmlFor="subject" className="block text-gray-200 mb-2">
                   Subject
                 </label>
                 <input
@@ -193,7 +193,7 @@ const Contact = () => {
               </div>
 
               <div>
-                <label htmlFor="message" className="block text-gray-300 mb-2">
+                <label htmlFor="message" className="block text-gray-200 mb-2">
                   Message
                 </label>
                 <textarea
@@ -231,7 +231,7 @@ const Contact = () => {
 
         {/* Footer */}
         <div className="mt-20 pt-8 border-t border-gray-700/50 text-center">
-          <p className="text-gray-400">
+          <p className="text-gray-200">
             © 2025 Pikki Lovaraju. Crafted with passion for data engineering excellence.
           </p>
         </div>

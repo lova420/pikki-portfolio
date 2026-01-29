@@ -1,6 +1,6 @@
 
 import React, { useState, useEffect, useRef } from 'react';
-import { Cloud, Database, Code, Cpu, Zap, Server } from 'lucide-react';
+import { Cloud, Database, Code, Layers } from 'lucide-react';
 import TiltCard3D from './TiltCard3D';
 
 const Skills = () => {
@@ -70,14 +70,24 @@ const Skills = () => {
     return 'from-yellow-400 to-orange-500';
   };
 
+  const getSkillTextColor = (level: number) => {
+    if (level >= 90) return 'text-green-400';
+    if (level >= 80) return 'text-blue-400';
+    return 'text-purple-400';
+  };
+
   return (
-    <section id="skills" className="py-20 bg-gray-800/50" ref={sectionRef}>
+    <section id="skills" className="py-16 bg-gray-800/30" ref={sectionRef}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent animate-gradient-x">
+        <div className="text-center mb-12">
+          <div className="inline-flex items-center gap-2 px-4 py-2 bg-green-500/10 rounded-full mb-6 border border-green-500/20">
+            <Layers size={18} className="text-green-400" />
+            <span className="text-green-400 font-medium text-sm tracking-wide uppercase">Technical Expertise</span>
+          </div>
+          <h2 className="text-4xl md:text-6xl font-extrabold mb-6 bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent animate-gradient-x">
             Technical Skills
           </h2>
-          <p className="text-xl text-gray-300">
+          <p className="text-lg md:text-xl text-gray-200 max-w-2xl mx-auto leading-relaxed">
             Expertise across the modern data engineering stack
           </p>
         </div>
@@ -85,40 +95,35 @@ const Skills = () => {
         <div className="grid md:grid-cols-3 gap-8 perspective-1000">
           {skillCategories.map((category, categoryIndex) => (
             <TiltCard3D key={categoryIndex} className="h-full" tiltIntensity={8} glareEnabled={true}>
-              <div className="bg-gray-900/60 rounded-xl p-8 border border-gray-700/50 h-full backdrop-blur-sm relative overflow-hidden group">
+              <div className="bg-gray-900/70 rounded-2xl p-8 border border-gray-700/50 min-h-[450px] h-full backdrop-blur-sm relative overflow-hidden group flex flex-col">
                 {/* Shimmer effect */}
                 <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
                   style={{
-                    background: 'linear-gradient(45deg, transparent 30%, rgba(255,255,255,0.05) 50%, transparent 70%)',
-                    backgroundSize: '200% 200%',
-                    animation: 'shimmer 2s infinite',
+                    background: 'linear-gradient(135deg, rgba(59, 130, 246, 0.05) 0%, transparent 50%, rgba(168, 85, 247, 0.05) 100%)',
                   }}
                 />
                 
                 {/* Category header with 3D rotating icon */}
-                <div className="flex items-center gap-3 mb-8">
+                <div className="flex items-center gap-4 mb-8">
                   <div 
-                    className={`p-3 rounded-xl bg-gradient-to-br ${category.gradient} shadow-lg transform transition-all duration-700 group-hover:rotate-12 group-hover:scale-110`}
+                    className={`p-4 rounded-xl bg-gradient-to-br ${category.gradient} shadow-lg transform transition-all duration-700 group-hover:rotate-12 group-hover:scale-110`}
                     style={{ transformStyle: 'preserve-3d' }}
                   >
-                    <category.icon size={24} className="text-white" />
+                    <category.icon size={28} className="text-white" />
                   </div>
-                  <h3 className="text-xl font-bold text-white group-hover:text-blue-400 transition-colors duration-300">
+                  <h3 className="text-xl font-bold text-white group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-blue-400 group-hover:to-purple-400 group-hover:bg-clip-text transition-all duration-300">
                     {category.title}
                   </h3>
                 </div>
                 
-                <div className="space-y-5">
+                <div className="space-y-5 flex-grow">
                   {category.skills.map((skill, skillIndex) => (
                     <div key={skillIndex} className="space-y-2 group/skill">
                       <div className="flex justify-between items-center">
-                        <span className="text-gray-300 font-medium text-sm group-hover/skill:text-white transition-colors duration-300">
+                        <span className="text-gray-200 font-medium text-sm group-hover/skill:text-white transition-colors duration-300">
                           {skill.name}
                         </span>
-                        <span className={`text-sm font-semibold transition-all duration-300 ${
-                          skill.level >= 90 ? 'text-green-400' : 
-                          skill.level >= 80 ? 'text-blue-400' : 'text-purple-400'
-                        }`}>
+                        <span className={`text-sm font-bold transition-all duration-300 ${getSkillTextColor(skill.level)}`}>
                           {skill.level}%
                         </span>
                       </div>
@@ -135,7 +140,7 @@ const Skills = () => {
                             <div 
                               className="absolute inset-0 -translate-x-full animate-shimmer"
                               style={{
-                                background: 'linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent)',
+                                background: 'linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent)',
                               }}
                             />
                           </div>

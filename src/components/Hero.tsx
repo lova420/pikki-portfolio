@@ -74,21 +74,10 @@ const Hero = () => {
       />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center z-10">
-        {/* Floating sparkle icon */}
-        <div className="flex justify-center mb-4">
-          <div className="relative">
-            <Sparkles 
-              size={32} 
-              className="text-yellow-400 animate-float"
-              style={{ animationDelay: '0.5s' }}
-            />
-            <div className="absolute inset-0 blur-md bg-yellow-400/30 rounded-full animate-pulse" />
-          </div>
-        </div>
 
         {/* 3D Name with hover effect */}
         <h1 
-          className="text-5xl md:text-7xl font-extrabold bg-gradient-to-r from-purple-400 via-pink-400 to-blue-400 text-transparent bg-clip-text mt-8 pb-2 animate-gradient-x cursor-default text-glow-hover transition-all duration-300"
+          className="text-5xl md:text-7xl font-extrabold bg-gradient-to-r from-purple-400 via-pink-400 to-blue-400 text-transparent bg-clip-text mt-24 pb-2 animate-gradient-x cursor-default text-glow-hover transition-all duration-300"
           style={{
             transform: `perspective(1000px) rotateX(${parallaxY * 0.1}deg) rotateY(${parallaxX * 0.1}deg)`,
           }}
@@ -96,22 +85,22 @@ const Hero = () => {
           Pikki Lovaraju
         </h1>
 
-        <div className="text-2xl md:text-4xl font-light mb-8 h-16 flex items-center justify-center mt-4">
-          <span className="text-gray-300">I'm a </span>
-          <span className="text-blue-400 font-semibold ml-2 min-w-[300px] text-left">
+        <div className="text-xl sm:text-2xl md:text-4xl font-light mb-6 min-h-[4rem] flex flex-col sm:flex-row items-center justify-center mt-4 gap-1 sm:gap-0">
+          <span className="text-gray-200">I'm a </span>
+          <span className="text-blue-400 font-semibold sm:ml-2 text-center sm:text-left">
             {displayText}
             <span className="animate-pulse text-purple-400">|</span>
           </span>
         </div>
 
-        <p className="text-lg md:text-xl text-gray-300 mb-10 max-w-3xl mx-auto leading-relaxed">
+        <p className="text-lg md:text-xl text-gray-200 mb-8 max-w-3xl mx-auto leading-relaxed">
           Data Engineer & AI Engineer with expertise in GCP, Databricks, and AI-driven data engineering. 
           Passionate about building scalable data pipelines, integrating AI/ML models into data workflows, 
           and delivering intelligent data processing and analytics solutions.
         </p>
 
         {/* Glassmorphism contact badges with 3D hover */}
-        <div className="flex flex-wrap justify-center gap-4 mb-12 text-gray-300">
+        <div className="flex flex-wrap justify-center gap-4 mb-8 text-gray-200">
           <div className="flex items-center gap-2 px-5 py-2.5 bg-gray-800/40 backdrop-blur-md rounded-full border border-gray-700/50 hover:border-blue-500/50 transition-all duration-500 card-3d-hover cursor-default">
             <MapPin size={18} className="text-blue-400" />
             <span className="text-sm">Chirala, India</span>
@@ -144,12 +133,15 @@ const Hero = () => {
           </MagneticButton>
         </div>
 
-        <button
-          onClick={scrollToAbout}
-          className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce hover:scale-125 transition-transform duration-300"
-        >
-          <ChevronDown size={32} className="text-blue-400" />
-        </button>
+        {/* Centered down arrow */}
+        <div className="flex justify-center mt-8">
+          <button
+            onClick={scrollToAbout}
+            className="animate-bounce hover:scale-125 transition-transform duration-300"
+          >
+            <ChevronDown size={32} className="text-blue-400" />
+          </button>
+        </div>
       </div>
     </section>
   );
