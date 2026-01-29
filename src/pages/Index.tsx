@@ -9,11 +9,16 @@ import Certifications from '../components/Certifications';
 import Contact from '../components/Contact';
 import Navbar from '../components/Navbar';
 import ParticleBackground from '../components/ParticleBackground';
+import FloatingBlobs from '../components/FloatingBlobs';
 
 const Index = () => {
   return (
     <div className="min-h-screen bg-gray-900 text-white relative overflow-x-hidden">
+      {/* Background layers */}
+      <FloatingBlobs />
       <ParticleBackground />
+      
+      {/* Content */}
       <Navbar />
       <Hero />
       <About />

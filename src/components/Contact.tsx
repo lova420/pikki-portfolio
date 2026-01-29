@@ -79,7 +79,7 @@ const Contact = () => {
     <section id="contact" className="py-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
+          <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent animate-gradient-x">
             Get In Touch
           </h2>
           <p className="text-xl text-gray-300 max-w-2xl mx-auto">
@@ -230,9 +230,9 @@ const Contact = () => {
         </div>
 
         {/* Footer */}
-        <div className="mt-20 pt-8 border-t border-gray-700 text-center">
+        <div className="mt-20 pt-8 border-t border-gray-700/50 text-center">
           <p className="text-gray-400">
-            © 2024 Pikki Lovaraju. Crafted with passion for data engineering excellence.
+            © 2025 Pikki Lovaraju. Crafted with passion for data engineering excellence.
           </p>
         </div>
       </div>

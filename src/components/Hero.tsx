@@ -1,11 +1,13 @@
 
 import React, { useState, useEffect } from 'react';
-import { ChevronDown, MapPin, Mail, Phone } from 'lucide-react';
+import { ChevronDown, MapPin, Mail, Phone, Sparkles } from 'lucide-react';
+import MagneticButton from './MagneticButton';
 
 const Hero = () => {
   const [displayText, setDisplayText] = useState('');
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isDeleting, setIsDeleting] = useState(false);
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
 
   const roles = [
     'GCP Data Engineer',
@@ -36,6 +38,14 @@ const Hero = () => {
     return () => clearTimeout(timeout);
   }, [displayText, currentIndex, isDeleting, roles]);
 
+  useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+      setMousePosition({ x: e.clientX, y: e.clientY });
+    };
+    window.addEventListener('mousemove', handleMouseMove);
+    return () => window.removeEventListener('mousemove', handleMouseMove);
+  }, []);
+
   const scrollToAbout = () => {
     const element = document.querySelector('#about');
     if (element) {
@@ -43,62 +53,100 @@ const Hero = () => {
     }
   };
 
+  // Calculate parallax offset based on mouse position
+  const parallaxX = (mousePosition.x - window.innerWidth / 2) * 0.02;
+  const parallaxY = (mousePosition.y - window.innerHeight / 2) * 0.02;
+
   return (
-    <section id="home" className="min-h-screen flex items-center justify-center relative">
+    <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden">
+      {/* Decorative floating elements */}
+      <div 
+        className="absolute top-20 left-10 w-20 h-20 rounded-full bg-gradient-to-r from-blue-500/20 to-purple-500/20 blur-xl animate-parallax-float"
+        style={{ transform: `translate(${parallaxX * 2}px, ${parallaxY * 2}px)` }}
+      />
+      <div 
+        className="absolute top-40 right-20 w-32 h-32 rounded-full bg-gradient-to-r from-pink-500/15 to-cyan-500/15 blur-xl animate-parallax-float"
+        style={{ animationDelay: '2s', transform: `translate(${-parallaxX * 1.5}px, ${parallaxY * 1.5}px)` }}
+      />
+      <div 
+        className="absolute bottom-40 left-1/4 w-24 h-24 rounded-full bg-gradient-to-r from-purple-500/20 to-pink-500/20 blur-xl animate-parallax-float"
+        style={{ animationDelay: '4s', transform: `translate(${parallaxX}px, ${-parallaxY}px)` }}
+      />
+
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center z-10">
-        <h1 className="text-6xl font-bold bg-gradient-to-r from-purple-400 to-blue-400 text-transparent bg-clip-text mt-16">
+        {/* Floating sparkle icon */}
+        <div className="flex justify-center mb-4">
+          <div className="relative">
+            <Sparkles 
+              size={32} 
+              className="text-yellow-400 animate-float"
+              style={{ animationDelay: '0.5s' }}
+            />
+            <div className="absolute inset-0 blur-md bg-yellow-400/30 rounded-full animate-pulse" />
+          </div>
+        </div>
+
+        {/* 3D Name with hover effect */}
+        <h1 
+          className="text-5xl md:text-7xl font-extrabold bg-gradient-to-r from-purple-400 via-pink-400 to-blue-400 text-transparent bg-clip-text mt-8 pb-2 animate-gradient-x cursor-default text-glow-hover transition-all duration-300"
+          style={{
+            transform: `perspective(1000px) rotateX(${parallaxY * 0.1}deg) rotateY(${parallaxX * 0.1}deg)`,
+          }}
+        >
           Pikki Lovaraju
         </h1>
 
-        <div className="text-2xl md:text-4xl font-light mb-8 h-16 flex items-center justify-center">
+        <div className="text-2xl md:text-4xl font-light mb-8 h-16 flex items-center justify-center mt-4">
           <span className="text-gray-300">I'm a </span>
           <span className="text-blue-400 font-semibold ml-2 min-w-[300px] text-left">
             {displayText}
-            <span className="animate-pulse">|</span>
+            <span className="animate-pulse text-purple-400">|</span>
           </span>
         </div>
 
-        <p className="text-xl text-gray-300 mb-8 max-w-3xl mx-auto leading-relaxed">
+        <p className="text-lg md:text-xl text-gray-300 mb-10 max-w-3xl mx-auto leading-relaxed">
           Data Engineer & AI Engineer with expertise in GCP, Databricks, and AI-driven data engineering. 
           Passionate about building scalable data pipelines, integrating AI/ML models into data workflows, 
           and delivering intelligent data processing and analytics solutions.
         </p>
 
-        <div className="flex flex-wrap justify-center gap-6 mb-12 text-gray-300">
-          <div className="flex items-center gap-2">
-            <MapPin size={20} className="text-blue-400" />
-            <span>Chirala, India</span>
+        {/* Glassmorphism contact badges with 3D hover */}
+        <div className="flex flex-wrap justify-center gap-4 mb-12 text-gray-300">
+          <div className="flex items-center gap-2 px-5 py-2.5 bg-gray-800/40 backdrop-blur-md rounded-full border border-gray-700/50 hover:border-blue-500/50 transition-all duration-500 card-3d-hover cursor-default">
+            <MapPin size={18} className="text-blue-400" />
+            <span className="text-sm">Chirala, India</span>
           </div>
-          <div className="flex items-center gap-2">
-            <Mail size={20} className="text-blue-400" />
-            <span>lovarajupikki123@gmail.com</span>
+          <div className="flex items-center gap-2 px-5 py-2.5 bg-gray-800/40 backdrop-blur-md rounded-full border border-gray-700/50 hover:border-blue-500/50 transition-all duration-500 card-3d-hover cursor-default">
+            <Mail size={18} className="text-blue-400" />
+            <span className="text-sm">lovarajupikki123@gmail.com</span>
           </div>
-          <div className="flex items-center gap-2">
-            <Phone size={20} className="text-blue-400" />
-            <span>+91 8465831285</span>
+          <div className="flex items-center gap-2 px-5 py-2.5 bg-gray-800/40 backdrop-blur-md rounded-full border border-gray-700/50 hover:border-blue-500/50 transition-all duration-500 card-3d-hover cursor-default">
+            <Phone size={18} className="text-blue-400" />
+            <span className="text-sm">+91 8465831285</span>
           </div>
         </div>
 
+        {/* Magnetic buttons */}
         <div className="flex flex-wrap justify-center gap-4 mb-16">
-          <button
+          <MagneticButton
             onClick={scrollToAbout}
-            className="px-8 py-3 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full font-semibold hover:from-blue-600 hover:to-purple-700 transform hover:scale-105 transition-all duration-300 shadow-lg"
+            className="px-8 py-3 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full font-semibold text-white hover:from-blue-600 hover:to-purple-700 transition-all duration-300 shadow-lg hover:shadow-blue-500/30 animate-glow-pulse"
           >
             Explore My Work
-          </button>
-          <a
+          </MagneticButton>
+          <MagneticButton
             href="https://www.linkedin.com/in/pikki-lovaraju/"
             target="_blank"
             rel="noopener noreferrer"
-            className="px-8 py-3 border-2 border-blue-500 text-blue-500 rounded-full font-semibold hover:bg-blue-500 hover:text-white transform hover:scale-105 transition-all duration-300"
+            className="px-8 py-3 border-2 border-blue-500 text-blue-400 rounded-full font-semibold hover:bg-blue-500/10 transition-all duration-300"
           >
             LinkedIn Profile
-          </a>
+          </MagneticButton>
         </div>
 
         <button
           onClick={scrollToAbout}
-          className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce"
+          className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce hover:scale-125 transition-transform duration-300"
         >
           <ChevronDown size={32} className="text-blue-400" />
         </button>
