@@ -9,9 +9,8 @@ const Hero = () => {
 
   const roles = [
     'GCP Data Engineer',
-    'Cloud Solutions Architect',
-    'AI/ML Data Specialist',
-    'Big Data Engineer'
+    'Databricks Data Engineer',
+    'AI/ML Engineer'
   ];
 
   useEffect(() => {
@@ -60,9 +59,9 @@ const Hero = () => {
         </div>
 
         <p className="text-xl text-gray-300 mb-8 max-w-3xl mx-auto leading-relaxed">
-          GCP Data Engineer with expertise in AI-driven data engineering, big data processing, 
-          and cloud-based solutions. Passionate about integrating AI/ML models into data workflows 
-          for intelligent data processing and analytics.
+          Data Engineer & AI Engineer with expertise in GCP, Databricks, and AI-driven data engineering. 
+          Passionate about building scalable data pipelines, integrating AI/ML models into data workflows, 
+          and delivering intelligent data processing and analytics solutions.
         </p>
 
         <div className="flex flex-wrap justify-center gap-6 mb-12 text-gray-300">

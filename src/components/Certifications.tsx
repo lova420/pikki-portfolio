@@ -1,37 +1,46 @@
-
-import React from 'react';
-import { Award, ExternalLink, Download } from 'lucide-react';
+import React from "react";
+import { Award, ExternalLink, Download } from "lucide-react";
 
 const Certifications = () => {
   const certifications = [
     {
-      title: 'Google Certified Professional Data Engineer',
-      issuer: 'Google Cloud',
-      description: 'Demonstrates expertise in designing, building, operationalizing, securing, and monitoring data processing systems',
-      skills: ['BigQuery', 'Dataflow', 'Cloud Composer', 'Data Pipeline Design'],
-      color: 'from-blue-500 to-cyan-500',
-      logo: 'https://upload.wikimedia.org/wikipedia/commons/5/51/Google_Cloud_logo.svg',
-      certificateUrl: '/my_files/google_certificate.png',
-      fileName: 'Google_Cloud_Professional_Data_Engineer_Certificate.png'
+      title: "Google Certified Professional Data Engineer",
+      issuer: "Google Cloud",
+      description:
+        "Demonstrates expertise in designing, building, operationalizing, securing, and monitoring data processing systems",
+      skills: [
+        "BigQuery",
+        "Dataflow",
+        "Cloud Composer",
+        "Data Pipeline Design",
+      ],
+      color: "from-blue-500 to-cyan-500",
+      logo: '/google-cloud-logo.png',
+      certificateUrl: "/my_files/google_certificate.png",
+      fileName: "Google_Cloud_Professional_Data_Engineer_Certificate.png",
     },
     {
-      title: 'Microsoft Certified Azure Administrator Associate',
-      issuer: 'Microsoft',
-      description: 'Validates skills in implementing, managing, and monitoring Azure environments',
-      skills: ['Azure Services', 'Virtual Machines', 'Storage', 'Networking'],
-      color: 'from-purple-500 to-pink-500',
-      logo: 'https://upload.wikimedia.org/wikipedia/commons/4/44/Microsoft_logo.svg',
-      certificateUrl: '/my_files/microsoft_certificate.png',
-      fileName: 'Microsoft_Azure_Administrator_Associate_Certificate.png'
-    }
+      title: "Microsoft Certified Azure Administrator Associate",
+      issuer: "Microsoft",
+      description:
+        "Validates skills in implementing, managing, and monitoring Azure environments",
+      skills: ["Azure Services", "Virtual Machines", "Storage", "Networking"],
+      color: "from-purple-500 to-pink-500",
+      logo: "https://upload.wikimedia.org/wikipedia/commons/4/44/Microsoft_logo.svg",
+      certificateUrl: "/my_files/microsoft_certificate.png",
+      fileName: "Microsoft_Azure_Administrator_Associate_Certificate.png",
+    },
   ];
 
-  const downloadCertificate = async (certificateUrl: string, fileName: string) => {
+  const downloadCertificate = async (
+    certificateUrl: string,
+    fileName: string,
+  ) => {
     try {
       const response = await fetch(certificateUrl);
       const blob = await response.blob();
       const url = window.URL.createObjectURL(blob);
-      const link = document.createElement('a');
+      const link = document.createElement("a");
       link.href = url;
       link.download = fileName;
       document.body.appendChild(link);
@@ -39,7 +48,7 @@ const Certifications = () => {
       document.body.removeChild(link);
       window.URL.revokeObjectURL(url);
     } catch (error) {
-      console.error('Error downloading certificate:', error);
+      console.error("Error downloading certificate:", error);
     }
   };
 
@@ -62,10 +71,12 @@ const Certifications = () => {
               className="group bg-gray-900/50 rounded-lg p-8 border border-gray-700 hover:border-blue-500 transition-all duration-300 transform hover:scale-105 hover:shadow-2xl"
             >
               <div className="flex items-start gap-4 mb-6">
-                <div className={`p-4 rounded-lg bg-gradient-to-r ${cert.color}/20 group-hover:scale-110 transition-transform duration-300 flex items-center justify-center`}>
-                  <img 
-                    src={cert.logo} 
-                    alt={`${cert.issuer} logo`} 
+                <div
+                  className={`p-4 rounded-lg bg-gradient-to-r ${cert.color}/20 group-hover:scale-110 transition-transform duration-300 flex items-center justify-center`}
+                >
+                  <img
+                    src={cert.logo}
+                    alt={`${cert.issuer} logo`}
                     className="w-8 h-8 object-contain"
                   />
                 </div>
@@ -73,13 +84,19 @@ const Certifications = () => {
                   <h3 className="text-xl font-bold text-white mb-2 group-hover:text-blue-400 transition-colors duration-300">
                     {cert.title}
                   </h3>
-                  <p className="text-blue-400 font-semibold mb-3">{cert.issuer}</p>
-                  <p className="text-gray-300 leading-relaxed">{cert.description}</p>
+                  <p className="text-blue-400 font-semibold mb-3">
+                    {cert.issuer}
+                  </p>
+                  <p className="text-gray-300 leading-relaxed">
+                    {cert.description}
+                  </p>
                 </div>
               </div>
 
               <div className="space-y-4">
-                <h4 className="text-lg font-semibold text-white">Key Skills Validated:</h4>
+                <h4 className="text-lg font-semibold text-white">
+                  Key Skills Validated:
+                </h4>
                 <div className="flex flex-wrap gap-2">
                   {cert.skills.map((skill, skillIndex) => (
                     <span
@@ -93,8 +110,10 @@ const Certifications = () => {
               </div>
 
               <div className="mt-6 flex justify-end">
-                <button 
-                  onClick={() => downloadCertificate(cert.certificateUrl, cert.fileName)}
+                <button
+                  onClick={() =>
+                    downloadCertificate(cert.certificateUrl, cert.fileName)
+                  }
                   className="flex items-center gap-2 text-blue-400 hover:text-blue-300 transition-colors duration-300"
                 >
                   <span className="text-sm">Download Certificate</span>
