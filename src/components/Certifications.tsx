@@ -1,7 +1,8 @@
 
 import React from 'react';
-import { Award, Download, BadgeCheck } from 'lucide-react';
-import TiltCard3D from './TiltCard3D';
+import { Download, BadgeCheck } from 'lucide-react';
+import HolographicCard from './HolographicCard';
+import ScrollReveal from './ScrollReveal';
 
 const Certifications = () => {
   const certifications = [
@@ -62,8 +63,9 @@ const Certifications = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 perspective-1000">
           {certifications.map((cert, index) => (
-            <TiltCard3D key={index} className="h-full" tiltIntensity={10} glareEnabled={true}>
-              <div className="bg-gray-900/70 rounded-2xl p-6 sm:p-8 md:p-10 border border-gray-700/50 min-h-[480px] h-auto md:h-[480px] backdrop-blur-sm relative overflow-hidden group flex flex-col">
+            <ScrollReveal key={index} animation="fade-up" delay={index * 150}>
+              <HolographicCard className="h-full">
+                <div className="bg-gray-900/70 rounded-2xl p-6 sm:p-8 md:p-10 border border-gray-700/50 min-h-[480px] h-auto md:h-[480px] backdrop-blur-sm relative overflow-hidden group flex flex-col">
                 {/* Animated shine sweep effect */}
                 <div 
                   className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"
@@ -122,7 +124,8 @@ const Certifications = () => {
                   </button>
                 </div>
               </div>
-            </TiltCard3D>
+              </HolographicCard>
+            </ScrollReveal>
           ))}
         </div>
       </div>

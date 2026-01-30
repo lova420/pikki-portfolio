@@ -2,6 +2,7 @@
 import React from 'react';
 import { Code, Database, Cloud, Brain, User } from 'lucide-react';
 import TiltCard3D from './TiltCard3D';
+import ScrollReveal from './ScrollReveal';
 
 const About = () => {
   const highlights = [
@@ -48,29 +49,32 @@ const About = () => {
         </div>
 
         <div className="grid md:grid-cols-2 gap-16 items-start mb-16">
-          <div className="space-y-8">
-            <h3 className="text-2xl md:text-3xl font-bold text-white mb-6 flex items-center gap-3">
-              <span className="w-10 h-1 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full" />
-              Profile Summary
-            </h3>
-            <p className="text-gray-200 leading-relaxed text-lg">
-              As a dedicated GCP Data Engineer, I specialize in designing, building, and optimizing 
-              scalable data pipelines using cutting-edge technologies like BigQuery, Cloud SQL, 
-              Apache Airflow, and Cloud Composer. My expertise extends to integrating AI and Machine 
-              Learning models into data workflows, enabling intelligent data processing and analytics.
-            </p>
-            <p className="text-gray-200 leading-relaxed text-lg">
-              With hands-on experience at Bilvantis Technologies, I've successfully implemented 
-              cloud data solutions that drive business value and enable data-driven decision making. 
-              I'm passionate about staying at the forefront of data engineering innovations and 
-              continuously expanding my expertise in cloud technologies.
-            </p>
-          </div>
+          <ScrollReveal animation="fade-right">
+            <div className="space-y-8">
+              <h3 className="text-2xl md:text-3xl font-bold text-white mb-6 flex items-center gap-3">
+                <span className="w-10 h-1 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full" />
+                Profile Summary
+              </h3>
+              <p className="text-gray-200 leading-relaxed text-lg">
+                As a dedicated GCP Data Engineer, I specialize in designing, building, and optimizing
+                scalable data pipelines using cutting-edge technologies like BigQuery, Cloud SQL,
+                Apache Airflow, and Cloud Composer. My expertise extends to integrating AI and Machine
+                Learning models into data workflows, enabling intelligent data processing and analytics.
+              </p>
+              <p className="text-gray-200 leading-relaxed text-lg">
+                With hands-on experience at Bilvantis Technologies, I've successfully implemented
+                cloud data solutions that drive business value and enable data-driven decision making.
+                I'm passionate about staying at the forefront of data engineering innovations and
+                continuously expanding my expertise in cloud technologies.
+              </p>
+            </div>
+          </ScrollReveal>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 perspective-1000">
             {highlights.map((item, index) => (
-              <TiltCard3D key={index} className="h-full" tiltIntensity={12}>
-                <div className="p-6 bg-gray-900/70 rounded-2xl border border-gray-700/50 min-h-[180px] sm:min-h-[220px] h-full backdrop-blur-sm relative overflow-hidden group flex flex-col">
+              <ScrollReveal key={index} animation="fade-up" delay={index * 100}>
+                <TiltCard3D className="h-full" tiltIntensity={12}>
+                  <div className="p-6 bg-gray-900/70 rounded-2xl border border-gray-700/50 min-h-[180px] sm:min-h-[220px] h-full backdrop-blur-sm relative overflow-hidden group flex flex-col">
                   {/* Animated border glow on hover */}
                   <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl"
                     style={{
@@ -92,8 +96,9 @@ const About = () => {
                   <p className="text-gray-200 text-sm leading-relaxed flex-grow">
                     {item.description}
                   </p>
-                </div>
-              </TiltCard3D>
+                  </div>
+                </TiltCard3D>
+              </ScrollReveal>
             ))}
           </div>
         </div>

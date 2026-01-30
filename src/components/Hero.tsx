@@ -1,7 +1,10 @@
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Suspense } from 'react';
 import { ChevronDown, MapPin, Mail, Phone, Sparkles } from 'lucide-react';
 import MagneticButton from './MagneticButton';
+
+// Lazy load 3D background to improve initial load
+const Hero3DBackground = React.lazy(() => import('./Hero3DBackground'));
 
 const Hero = () => {
   const [displayText, setDisplayText] = useState('');
@@ -59,6 +62,11 @@ const Hero = () => {
 
   return (
     <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden">
+      {/* 3D Background */}
+      <Suspense fallback={null}>
+        <Hero3DBackground />
+      </Suspense>
+
       {/* Decorative floating elements */}
       <div 
         className="absolute top-20 left-10 w-20 h-20 rounded-full bg-gradient-to-r from-blue-500/20 to-purple-500/20 blur-xl animate-parallax-float"

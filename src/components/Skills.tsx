@@ -1,7 +1,11 @@
 
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, Suspense } from 'react';
 import { Cloud, Database, Code, Layers } from 'lucide-react';
 import TiltCard3D from './TiltCard3D';
+import ScrollReveal from './ScrollReveal';
+
+// Lazy load 3D sphere
+const Skills3DSphere = React.lazy(() => import('./Skills3DSphere'));
 
 const Skills = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -92,9 +96,29 @@ const Skills = () => {
           </p>
         </div>
 
+        {/* 3D Skills Sphere Visualization */}
+        <ScrollReveal animation="zoom-in" className="mb-16 hidden md:block">
+          <div className="relative">
+            <div className="absolute inset-0 bg-gradient-to-r from-blue-500/5 via-purple-500/5 to-pink-500/5 rounded-3xl blur-xl" />
+            <div className="relative bg-gray-900/30 rounded-3xl border border-gray-700/30 backdrop-blur-sm overflow-hidden">
+              <div className="text-center pt-6">
+                <p className="text-gray-400 text-sm">Drag to explore • Hover for details</p>
+              </div>
+              <Suspense fallback={
+                <div className="w-full h-[500px] flex items-center justify-center">
+                  <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-purple-500"></div>
+                </div>
+              }>
+                <Skills3DSphere />
+              </Suspense>
+            </div>
+          </div>
+        </ScrollReveal>
+
         <div className="grid md:grid-cols-3 gap-8 perspective-1000">
           {skillCategories.map((category, categoryIndex) => (
-            <TiltCard3D key={categoryIndex} className="h-full" tiltIntensity={8} glareEnabled={true}>
+            <ScrollReveal key={categoryIndex} animation="fade-up" delay={categoryIndex * 100}>
+              <TiltCard3D className="h-full" tiltIntensity={8} glareEnabled={true}>
               <div className="bg-gray-900/70 rounded-2xl p-8 border border-gray-700/50 min-h-[450px] h-full backdrop-blur-sm relative overflow-hidden group flex flex-col">
                 {/* Shimmer effect */}
                 <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
@@ -150,7 +174,8 @@ const Skills = () => {
                   ))}
                 </div>
               </div>
-            </TiltCard3D>
+              </TiltCard3D>
+            </ScrollReveal>
           ))}
         </div>
       </div>
