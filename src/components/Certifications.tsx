@@ -60,10 +60,10 @@ const Certifications = () => {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-8 perspective-1000">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 perspective-1000">
           {certifications.map((cert, index) => (
             <TiltCard3D key={index} className="h-full" tiltIntensity={10} glareEnabled={true}>
-              <div className="bg-gray-900/70 rounded-2xl p-8 md:p-10 border border-gray-700/50 h-[480px] backdrop-blur-sm relative overflow-hidden group flex flex-col">
+              <div className="bg-gray-900/70 rounded-2xl p-6 sm:p-8 md:p-10 border border-gray-700/50 min-h-[480px] h-auto md:h-[480px] backdrop-blur-sm relative overflow-hidden group flex flex-col">
                 {/* Animated shine sweep effect */}
                 <div 
                   className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"
@@ -74,37 +74,37 @@ const Certifications = () => {
                   }}
                 />
                 
-                <div className="flex items-start gap-5 mb-8 relative z-10">
+                <div className="flex flex-col sm:flex-row items-start gap-4 sm:gap-5 mb-6 sm:mb-8 relative z-10">
                   {/* 3D rotating logo container */}
-                  <div 
-                    className={`p-5 rounded-2xl bg-gradient-to-br ${cert.color} shadow-lg transform transition-all duration-500 group-hover:scale-110 group-hover:rotate-6 flex items-center justify-center`}
+                  <div
+                    className={`p-4 sm:p-5 rounded-2xl bg-gradient-to-br ${cert.color} shadow-lg transform transition-all duration-500 group-hover:scale-110 group-hover:rotate-6 flex items-center justify-center flex-shrink-0`}
                     style={{ transformStyle: 'preserve-3d' }}
                   >
-                    <img 
-                      src={cert.logo} 
-                      alt={`${cert.issuer} logo`} 
-                      className="w-12 h-12 object-contain"
+                    <img
+                      src={cert.logo}
+                      alt={`${cert.issuer} logo`}
+                      className="w-10 h-10 sm:w-12 sm:h-12 object-contain"
                     />
                   </div>
-                  <div className="flex-1">
-                    <h3 className="text-xl md:text-2xl font-bold text-white mb-2 group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-blue-400 group-hover:to-purple-400 group-hover:bg-clip-text transition-all duration-300">
+                  <div className="flex-1 min-w-0">
+                    <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-white mb-2 group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-blue-400 group-hover:to-purple-400 group-hover:bg-clip-text transition-all duration-300">
                       {cert.title}
                     </h3>
-                    <p className="text-blue-400 font-semibold text-lg mb-3">{cert.issuer}</p>
-                    <p className="text-gray-200 leading-relaxed">{cert.description}</p>
+                    <p className="text-blue-400 font-semibold text-base sm:text-lg mb-2 sm:mb-3">{cert.issuer}</p>
+                    <p className="text-gray-200 leading-relaxed text-sm sm:text-base">{cert.description}</p>
                   </div>
                 </div>
 
-                <div className="space-y-4 relative z-10 flex-grow">
-                  <h4 className="text-lg font-bold text-white flex items-center gap-2">
-                    <span className="w-8 h-0.5 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full" />
+                <div className="space-y-3 sm:space-y-4 relative z-10 flex-grow">
+                  <h4 className="text-base sm:text-lg font-bold text-white flex items-center gap-2">
+                    <span className="w-6 sm:w-8 h-0.5 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full" />
                     Key Skills Validated
                   </h4>
                   <div className="flex flex-wrap gap-2">
                     {cert.skills.map((skill, skillIndex) => (
                       <span
                         key={skillIndex}
-                        className={`px-4 py-2 rounded-full text-sm font-medium border transition-all duration-300 bg-gradient-to-r ${cert.color}/15 text-white border-white/15 hover:border-white/40 hover:scale-105 cursor-default`}
+                        className={`px-3 sm:px-4 py-1.5 sm:py-2 rounded-full text-xs sm:text-sm font-medium border transition-all duration-300 bg-gradient-to-r ${cert.color}/15 text-white border-white/15 hover:border-white/40 hover:scale-105 cursor-default`}
                       >
                         {skill}
                       </span>
@@ -112,12 +112,12 @@ const Certifications = () => {
                   </div>
                 </div>
 
-                <div className="mt-6 flex justify-end relative z-10">
-                  <button 
+                <div className="mt-4 sm:mt-6 flex justify-center sm:justify-end relative z-10">
+                  <button
                     onClick={() => downloadCertificate(cert.certificateUrl, cert.fileName)}
-                    className={`flex items-center gap-2 px-5 py-2.5 rounded-xl bg-gradient-to-r ${cert.color}/20 border border-white/10 text-white hover:border-white/30 transition-all duration-300 group/btn hover:scale-105`}
+                    className={`flex items-center gap-2 px-4 sm:px-5 py-2 sm:py-2.5 rounded-xl bg-gradient-to-r ${cert.color}/20 border border-white/10 text-white hover:border-white/30 transition-all duration-300 group/btn hover:scale-105 w-full sm:w-auto justify-center`}
                   >
-                    <span className="text-sm font-medium">Download Certificate</span>
+                    <span className="text-xs sm:text-sm font-medium">Download Certificate</span>
                     <Download size={16} className="transform transition-transform duration-300 group-hover/btn:translate-y-0.5" />
                   </button>
                 </div>

@@ -67,10 +67,10 @@ const About = () => {
             </p>
           </div>
 
-          <div className="grid grid-cols-2 gap-5 perspective-1000">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 perspective-1000">
             {highlights.map((item, index) => (
               <TiltCard3D key={index} className="h-full" tiltIntensity={12}>
-                <div className="p-6 bg-gray-900/70 rounded-2xl border border-gray-700/50 min-h-[220px] h-full backdrop-blur-sm relative overflow-hidden group flex flex-col">
+                <div className="p-6 bg-gray-900/70 rounded-2xl border border-gray-700/50 min-h-[180px] sm:min-h-[220px] h-full backdrop-blur-sm relative overflow-hidden group flex flex-col">
                   {/* Animated border glow on hover */}
                   <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl"
                     style={{
